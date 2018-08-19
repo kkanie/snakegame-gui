@@ -6,11 +6,11 @@ class Collision(ABC):
     """Abstract interface for a game collision."""
 
     @abstractmethod
-    def snake(self, coord: List) -> bool:
+    def snake(self, location: List) -> bool:
         pass
 
     @abstractmethod
-    def apple(self, coord: List) -> bool:
+    def apple(self, location: List) -> bool:
         pass
 
 
@@ -24,19 +24,18 @@ class GameCollision(Collision):
         self._diff: int = 10
         self._shift: int = 1
 
-    def snake(self, coord: List) -> bool:
-        return (coord[0] + coord[0] + self._diff) > self._position[0] > coord[0] and \
-               (coord[1] + coord[1] + self._diff) > self._position[1] > coord[1] or \
-               (coord[0] + coord[0] + self._diff) > self._position[0] + self._diff > coord[0] and \
-               (coord[1] + coord[1] + self._diff) > self._position[1] + self._diff > coord[1]
+    def snake(self, location: List) -> bool:
+        return (location[0] + location[0] + self._diff) > self._position[0] > location[0] and \
+               (location[1] + location[1] + self._diff) > self._position[1] > location[1] or \
+               (location[0] + location[0] + self._diff) > self._position[0] + self._diff > location[0] and \
+               (location[1] + location[1] + self._diff) > self._position[1] + self._diff > location[1]
 
-    def apple(self, coordinate: List) -> bool:
-        return (coordinate[0] - self._shift +
-                (self._times * self._size)) > self._position[0] > coordinate[0] - self._shift and \
-               (coordinate[1] - self._shift +
-                (self._times * self._size)) > self._position[1] > coordinate[1] - self._shift or \
-               (coordinate[0] - self._shift +
-                (self._times * self._size)) > self._position[0] + self._diff > coordinate[0] - self._shift and \
-               (coordinate[1] - self._shift +
-                (self._times * self._size)) > self._position[1] + self._diff > coordinate[1] - self._shift
-
+    def apple(self, location: List) -> bool:
+        return (location[0] - self._shift +
+                (self._times * self._size)) > self._position[0] > location[0] - self._shift and \
+               (location[1] - self._shift +
+                (self._times * self._size)) > self._position[1] > location[1] - self._shift or \
+               (location[0] - self._shift +
+                (self._times * self._size)) > self._position[0] + self._diff > location[0] - self._shift and \
+               (location[1] - self._shift +
+                (self._times * self._size)) > self._position[1] + self._diff > location[1] - self._shift
