@@ -15,7 +15,7 @@ class Collision(ABC):
 
 
 class GameCollision(Collision):
-    """Snake game collision interface."""
+    """GreenSnake game collision interface."""
 
     def __init__(self, position: List, size: int) -> None:
         self._position: List = position
