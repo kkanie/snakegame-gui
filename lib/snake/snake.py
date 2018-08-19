@@ -114,4 +114,5 @@ class GreenSnake(Snake):
 
     def put_apple(self) -> None:
         self._score += 1
-        self._images.append([GameImage(location=(10 * self._size, 10 * self._size), color=(0, 255, 0)), [10, 10]])
+        self._images.append(
+            [GameImage(location=(10 * self._size, 10 * self._size), color=(0, 255, 0)).surface(), [10, 10]])
