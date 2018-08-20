@@ -16,6 +16,10 @@ class Screen(ABC):
     def blit(self, surface: Surface, coordinate: List) -> Rect:
         pass
 
+    @abstractmethod
+    def update(self) -> None:
+        pass
+
 
 class GameScreen(Screen):
     """Game screen interface."""
@@ -29,3 +33,6 @@ class GameScreen(Screen):
 
     def blit(self, surface: Surface, coordinate: List) -> Rect:
         return self._screen.blit(surface, coordinate)
+
+    def update(self) -> None:
+        pygame.display.update()
