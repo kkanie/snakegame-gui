@@ -1,36 +1,20 @@
-from abc import ABC, abstractmethod
+""" This module represents specific game events. """
+
 from typing import List
 import pygame
 
 
-class Event(ABC):
-    """Abstract interface for an event."""
-
-    @abstractmethod
-    def get(self) -> List:
-        pass
-
-    @abstractmethod
-    def pump(self) -> None:
-        pass
-
-    @abstractmethod
-    def mouse_pressed(self) -> List:
-        pass
+def game_event() -> List:
+    return pygame.event.get()
 
 
-class GameEvent(Event):
-    """Game event interface."""
+def pump_event() -> None:
+    return pygame.event.pump()
 
-    def __init__(self) -> None:
-        self._events = pygame.event
-        self._mouse = pygame.mouse
 
-    def get(self) -> List:
-        return self._events.get()
+def pressed_mouse() -> List:
+    return pygame.mouse.get_pressed()
 
-    def pump(self) -> None:
-        self._events.pump()
 
-    def mouse_pressed(self) -> List:
-        return self._mouse.get_pressed()
+def mouse_position() -> List:
+    return pygame.mouse.get_pos()
