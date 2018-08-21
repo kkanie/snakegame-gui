@@ -21,11 +21,12 @@ class Apple(Food):
     """Apple food interface."""
 
     def __init__(self, size: int) -> None:
-        self._image: Image = GameImage(location=(10 * size, 10 * size), color=(255, 0, 0))
+        self._image: Image = GameImage(location=(10 * size, 10 * size))
         self._location: List[int] = [randrange(10, 700, 20), randrange(10, 400, 20)]
 
     def location(self) -> List[int]:
         return self._location
 
     def image(self) -> Surface:
+        self._image.fill(color=(255, 0, 0))
         return self._image.surface()

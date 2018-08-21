@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from typing import List
 from pygame import Surface
 from lib.action.collision import Collision, GameCollision
-from lib.environment.surface import GameImage
+from lib.environment.surface import GameImage, Image
 
 
 class Snake(ABC):
@@ -63,7 +63,7 @@ class GreenSnake(Snake):
     def __init__(self, speed: float, size: int) -> None:
         self._location: List = [20, 20]
         self._collision: Collision = GameCollision(self._location, size)
-        self._image = GameImage(location=(10 * size, 10 * size), color=(0, 255, 0))
+        self._image = GameImage(location=(10 * size, 10 * size))
         self._speed: float = speed
         self._size: int = size
         self._images: List = []
@@ -76,6 +76,7 @@ class GreenSnake(Snake):
         return self._score
 
     def image(self) -> Surface:
+        self._image.fill(color=(0, 255, 0))
         return self._image.surface()
 
     def images(self) -> List:
@@ -114,5 +115,6 @@ class GreenSnake(Snake):
 
     def put_apple(self) -> None:
         self._score += 1
-        self._images.append(
-            [GameImage(location=(10 * self._size, 10 * self._size), color=(0, 255, 0)).surface(), [10, 10]])
+        image: Image = GameImage(location=(10 * self._size, 10 * self._size))
+        image.fill(color=(0, 255, 0))
+        self._images.append([image.surface(), [10, 10]])

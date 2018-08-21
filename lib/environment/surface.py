@@ -4,7 +4,11 @@ from pygame import Surface
 
 
 class Image(ABC):
-    """Abstract interface for an surface."""
+    """Abstract interface for an fill."""
+
+    @abstractmethod
+    def fill(self, color: Tuple) -> None:
+        pass
 
     @abstractmethod
     def surface(self) -> Surface:
@@ -12,12 +16,13 @@ class Image(ABC):
 
 
 class GameImage(Image):
-    """Specific game surface."""
+    """Specific game fill."""
 
-    def __init__(self, location: Tuple, color: Tuple) -> None:
-        self._surface: Surface = Surface(location)
-        self._color: Tuple = color
+    def __init__(self, location: Tuple, *args) -> None:
+        self._surface: Surface = Surface(location, *args)
+
+    def fill(self, color: Tuple) -> None:
+        self._surface.fill(color)
 
     def surface(self) -> Surface:
-        self._surface.fill(self._color)
         return self._surface
