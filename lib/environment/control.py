@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from pygame import K_RIGHT, K_LEFT, K_UP, K_DOWN, K_ESCAPE, KEYDOWN, QUIT
+from pygame import K_RIGHT, K_LEFT, K_UP, K_DOWN, K_ESCAPE, KEYDOWN, QUIT, SRCALPHA
 
 
 class Key(ABC):
@@ -35,6 +35,10 @@ class Type(ABC):
 
     @abstractmethod
     def quit(self) -> int:
+        pass
+
+    @abstractmethod
+    def src_alpha(self) -> int:
         pass
 
 
@@ -82,12 +86,16 @@ class ControlType(Type):
     def __init__(self) -> None:
         self._quit: int = QUIT
         self._down: int = KEYDOWN
+        self._scr_alpha: int = SRCALPHA
 
     def down(self) -> int:
         return self._down
 
     def quit(self) -> int:
         return self._quit
+
+    def src_alpha(self) -> int:
+        return self._scr_alpha
 
 
 class GameControls(Controls):
