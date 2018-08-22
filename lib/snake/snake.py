@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from typing import List
 from pygame import Surface
 from lib.action.collision import Collision, GameCollision
-from lib.environment.surface import GameImage, Image
+from lib.environment.image import GameImage, Image
 
 
 class Snake(ABC):

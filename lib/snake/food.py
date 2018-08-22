@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from random import randrange
 from typing import List
-from lib.environment.surface import Image, GameImage
+from lib.environment.image import Image, GameImage
 from pygame import Surface
 
 
