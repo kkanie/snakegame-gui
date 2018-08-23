@@ -57,7 +57,7 @@ class Snake(ABC):
         pass
 
 
-class GreenSnake(Snake):
+class SnakeEntity(Snake):
     """Concrete snake entity."""
 
     def __init__(self, speed: float, size: int) -> None:
