@@ -8,19 +8,19 @@ Run script from the root directory of the project:
 ```
 
 ## Demo
-- Start up menu
+### Start up menu
 ![Screenshot](lib/demo/start_up.jpg)
 
-- Type of snake elements
+### Type of snake elements
 ![Screenshot](lib/demo/type.jpg)
 
-- Game levels
+### Game levels
 ![Screenshot](lib/demo/level.jpg)
 
-- Game runner
+### Game runner
 ![Screenshot](lib/demo/runner.jpg)
 
-- Game over
+### Game over
 ![Screenshot](lib/demo/game_over.jpg)
 
 ## Contributing

@@ -1,6 +1,6 @@
 import sys
 from abc import ABC, abstractmethod
-from typing import List, Iterable, Callable
+from typing import List, Iterable, Callable, Tuple
 from pygame.surface import Surface
 from lib.action.event import (
     mouse_position, game_event,
@@ -45,7 +45,53 @@ class Engine(ABC):
 class Menu(ABC):
     """Abstract interface for a menu game."""
 
-    pass
+    @abstractmethod
+    def prepare_canvas(self) -> None:
+        pass
+
+    @abstractmethod
+    def make_text(self, x: int, y: int, text: str, size: int=20, color: Tuple=(0, 0, 0), center: bool=False) -> None:
+        pass
+
+    @abstractmethod
+    def make_button(self, loc: Iterable, text: str, color: Iterable, action: Callable, size: int=20) -> None:
+        pass
+
+    @abstractmethod
+    def mainloop(self) -> None:
+        pass
+
+    @abstractmethod
+    def start_up(self) -> None:
+        pass
+
+    @abstractmethod
+    def small(self) -> None:
+        pass
+
+    @abstractmethod
+    def huge(self) -> None:
+        pass
+
+    @abstractmethod
+    def easy(self) -> None:
+        pass
+
+    @abstractmethod
+    def normal(self) -> None:
+        pass
+
+    @abstractmethod
+    def advanced(self) -> None:
+        pass
+
+    @abstractmethod
+    def expert(self) -> None:
+        pass
+
+    @abstractmethod
+    def quit(self) -> None:
+        pass
 
 
 class Game(ABC):
@@ -281,7 +327,7 @@ class StartGameMenu(Menu):
             image.fill(color=(0, 0, 0))
             self._blocks.append([image.surface(), [790, pict]])
 
-    def make_text(self, x: int, y: int, text: str, size: int=20, color=(0, 0, 0), center: bool=False) -> None:
+    def make_text(self, x: int, y: int, text: str, size: int=20, color: Tuple=(0, 0, 0), center: bool=False) -> None:
         txts = GameFont('Courier New', size, text, True, color).render()
         txtrect = txts.get_rect()
         txtrect.topleft = x, y
@@ -349,19 +395,19 @@ class StartGameMenu(Menu):
                             self._click = False
             self._screen.update()
 
-    def start_up(self):
+    def start_up(self) -> None:
         self._run_button: str = '(150,300,100,50),"Small", [(0,255,0), (0,150,0)], self.small'
         self._quit_button: str = '(550,300,100,50),"Huge", [(0,255,0), (0,150,0)], self.huge'
         self._buttons: List = [self._run_button, self._quit_button]
 
-    def small(self):
+    def small(self) -> None:
         self._run_button: str = '(150,300,100,50),"Easy", [(0,255,0), (0,150,0)], self.easy'
         self._quit_button: str = '(283,300,100,50),"Normal", [(0,255,0), (0,150,0)], self.normal'
         self._hard_button: str = '(417,300,100,50),"Advanced", [(0,255,0), (0,150,0)], self.advanced'
         self._expert_button: str = '(550,300,100,50),"Expert", [(0,255,0), (0,150,0)], self.expert'
         self._buttons: List = [self._run_button, self._quit_button, self._hard_button, self._expert_button]
 
-    def huge(self):
+    def huge(self) -> None:
         self._size = 2
         self._run_button: str = '(150,300,100,50),"Easy", [(0,255,0), (0,150,0)], self.easy'
         self._quit_button: str = '(283,300,100,50),"Normal", [(0,255,0), (0,150,0)], self.normal'
