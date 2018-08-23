@@ -14,6 +14,10 @@ def pump_event() -> None:
     return pygame.event.pump()
 
 
+def init_game() -> None:
+    pygame.init()
+
+
 def pressed_mouse() -> List:
     return pygame.mouse.get_pressed()
 

@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Tuple, Any, List, Iterable
+from typing import Tuple, Iterable, Any
 from pygame.rect import Rect
 
 
@@ -38,12 +38,11 @@ class Shape(ABC):
 class Rectangle(Shape):
     """Rectangle shape."""
 
-    def __init__(self, position: List) -> None:
+    def __init__(self, position: Iterable) -> None:
         self._shape: Rect = Rect(position)
         self._top_left: Tuple = (0, 0)
 
-    @abstractmethod
-    def shape(self) -> Rect:
+    def shape(self) -> Any:
         return self._shape
 
     @property

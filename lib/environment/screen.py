@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import List, Tuple
+from typing import List, Tuple, Iterable
 import pygame
 from pygame import Surface
 from pygame.rect import Rect
@@ -13,7 +13,7 @@ class Screen(ABC):
         pass
 
     @abstractmethod
-    def blit(self, surface: Surface, coordinate: List) -> Rect:
+    def blit(self, surface: Surface, coordinate: Iterable) -> Rect:
         pass
 
     @abstractmethod
@@ -22,16 +22,16 @@ class Screen(ABC):
 
 
 class GameScreen(Screen):
-    """Game screen interface."""
+    """Engine screen interface."""
 
-    def __init__(self, resolution: Tuple[int, int] = (800, 450), title: str = 'PySnake Game') -> None:
+    def __init__(self, resolution: Tuple[int, int] = (800, 450), title: str = 'PySnake Engine') -> None:
         self._screen: Surface = pygame.display.set_mode(resolution)
         pygame.display.set_caption(title)
 
     def fill(self, color: Tuple[int, int, int]) -> None:
         return self._screen.fill(color)
 
-    def blit(self, surface: Surface, coordinate: List) -> Rect:
+    def blit(self, surface: Surface, coordinate: Iterable) -> Rect:
         return self._screen.blit(surface, coordinate)
 
     def update(self) -> None:

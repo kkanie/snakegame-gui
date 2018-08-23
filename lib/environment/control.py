@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from pygame import K_RIGHT, K_LEFT, K_UP, K_DOWN, K_ESCAPE, KEYDOWN, QUIT, SRCALPHA
+from pygame import K_RIGHT, K_LEFT, K_UP, K_DOWN, K_ESCAPE, KEYDOWN, QUIT, SRCALPHA, BLEND_RGBA_MAX, BLEND_RGBA_MIN
 
 
 class Key(ABC):
@@ -39,6 +39,14 @@ class Type(ABC):
 
     @abstractmethod
     def src_alpha(self) -> int:
+        pass
+
+    @abstractmethod
+    def blend_rgba_max(self) -> int:
+        pass
+
+    @abstractmethod
+    def blend_rgba_min(self) -> int:
         pass
 
 
@@ -87,6 +95,8 @@ class ControlType(Type):
         self._quit: int = QUIT
         self._down: int = KEYDOWN
         self._scr_alpha: int = SRCALPHA
+        self._blend_rgba_max: int = BLEND_RGBA_MAX
+        self._blend_rgba_min: int = BLEND_RGBA_MIN
 
     def down(self) -> int:
         return self._down
@@ -96,6 +106,12 @@ class ControlType(Type):
 
     def src_alpha(self) -> int:
         return self._scr_alpha
+
+    def blend_rgba_max(self) -> int:
+        return self._blend_rgba_max
+
+    def blend_rgba_min(self) -> int:
+        return self._blend_rgba_min
 
 
 class GameControls(Controls):

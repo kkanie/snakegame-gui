@@ -13,7 +13,7 @@ class Font(ABC):
 
 
 class GameFont(Font):
-    """Game font interface."""
+    """Engine font interface."""
 
     def __init__(self, name: str, size: int, text: str, antialias: bool, color: Tuple) -> None:
         self._font = pygame.font.SysFont(name, size)
