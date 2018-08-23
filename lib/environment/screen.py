@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import List, Tuple, Iterable
+from typing import Tuple, Iterable
 import pygame
 from pygame import Surface
 from pygame.rect import Rect
@@ -24,7 +24,7 @@ class Screen(ABC):
 class GameScreen(Screen):
     """Engine screen interface."""
 
-    def __init__(self, resolution: Tuple[int, int] = (800, 450), title: str = 'PySnake Engine') -> None:
+    def __init__(self, resolution: Tuple[int, int] = (800, 450), title: str = 'PySnake Game') -> None:
         self._screen: Surface = pygame.display.set_mode(resolution)
         pygame.display.set_caption(title)
 
