@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Tuple, Any, List
+from typing import Tuple, Any, List, Iterable
 from pygame.rect import Rect
 
 
@@ -15,7 +15,23 @@ class Shape(ABC):
         pass
 
     @abstractmethod
+    def top_right(self) -> Iterable:
+        pass
+
+    @abstractmethod
     def size(self) -> Tuple:
+        pass
+
+    @abstractmethod
+    def bottom_right(self) -> Iterable:
+        pass
+
+    @abstractmethod
+    def bottom_left(self) -> Iterable:
+        pass
+
+    @abstractmethod
+    def inflate(self, x: int, y: int) -> Rect:
         pass
 
 
@@ -39,5 +55,20 @@ class Rectangle(Shape):
         self._top_left = position
 
     @property
+    def top_right(self) -> Iterable:
+        return self._shape.topright
+
+    @property
+    def bottom_left(self) -> Iterable:
+        return self._shape.bottomleft
+
+    @property
+    def bottom_right(self) -> Iterable:
+        return self._shape.bottomright
+
+    @property
     def size(self) -> Tuple:
         return self._shape.size
+
+    def inflate(self, x: int, y: int) -> Rect:
+        return self._shape.inflate(x, y)

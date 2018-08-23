@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Tuple
+from typing import Tuple, Iterable
 from pygame import Surface
 
 
@@ -18,7 +18,7 @@ class Image(ABC):
 class GameImage(Image):
     """Specific game fill."""
 
-    def __init__(self, location: Tuple, *args) -> None:
+    def __init__(self, location: Iterable, *args) -> None:
         self._surface: Surface = Surface(location, *args)
 
     def fill(self, color: Tuple) -> None:
