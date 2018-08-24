@@ -23,6 +23,12 @@ Run script from the root directory of the project:
 ### Game over
 ![Screenshot](lib/demo/game_over.jpg)
 
+## Run unittests
+Run script from the root directory of the project:
+```bash
+~ pytest -s -v
+```
+
 ## Contributing
 
 - clone the repository
