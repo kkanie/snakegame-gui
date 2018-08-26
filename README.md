@@ -4,7 +4,7 @@ A simple snake game written with python `pygame` package.
 ## Run a terminal snake game
 Run script from the root directory of the project:
 ```bash
-~ python snake_game.py
+~ python pysnake.py
 ```
 
 ## Demo
