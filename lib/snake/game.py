@@ -106,7 +106,7 @@ class Game(ABC):
         pass
 
     @abstractmethod
-    def menu(self) -> None:
+    def launch_main_menu(self) -> None:
         pass
 
 
@@ -444,9 +444,9 @@ class PySnakeGame(Game):
     def restart(self) -> None:
         global game
         del game
-        self.menu()
+        self.launch_main_menu()
 
-    def menu(self) -> None:
+    def launch_main_menu(self) -> None:
         global menu
         init_game()
         menu = StartGameMenu()
