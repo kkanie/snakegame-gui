@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
 	python3-pip \
 	git
 
-RUN git clone https://github.com/vyahello/snakegame-gui.git
+RUN git clone https://github.com/kkanie/snakegame-gui.git
 
 WORKDIR ./snakegame-gui
 
