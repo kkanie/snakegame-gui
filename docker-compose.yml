@@ -1,0 +1,15 @@
+version: '3'
+services:
+  builder:
+    build:
+      context: ./build
+      dockerfile: Dockerfile
+    image: snake
+
+  tester:
+    build:
+      context: ./test
+      dockerfile: Dockerfile
+    image: snake2
+    depends_on:
+      - builder
