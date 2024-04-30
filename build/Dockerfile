@@ -1,7 +1,15 @@
-FROM python:3.9 
+FROM ubuntu:latest
 
-WORKDIR /app
+WORKDIR ./app
 
-RUN pip install --no-cache-dir -r pygame \ pytest
+RUN apt-get update && apt-get install -y \
+	python3 \
+	python3-pip \
+	git
 
-COPY . .
+RUN git clone https://github.com/kkanie/snakegame-gui.git
+
+WORKDIR ./snakegame-gui
+
+RUN pip install pygame \
+	pytest
