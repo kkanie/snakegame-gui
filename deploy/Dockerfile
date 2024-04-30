@@ -11,4 +11,4 @@ COPY . .
 
 CMD ["pytest"]
 
-CMD ["python", "pysnake.py"]
+
