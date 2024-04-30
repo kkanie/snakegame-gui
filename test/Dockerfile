@@ -1,10 +1,5 @@
-FROM snake:latest
+FROM snake
 
-WORKDIR /app
+WORKDIR /app/snakegame-gui
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY . .
-
-CMD ["pytest"]
+CMD ["pytest", "-s", "-v"]
