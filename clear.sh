@@ -12,6 +12,6 @@ fi
 docker ps -a
 docker images
 
-if [! -d "log" ]; then
+if [ ! -d "log" ]; then
  mkdir log
 fi
